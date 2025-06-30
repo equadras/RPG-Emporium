@@ -1,0 +1,20 @@
+export const removeAccents = (value: string) => {
+  return value
+    .replace(/á/g, 'a')
+    .replace(/ã/g, 'a')
+    .replace(/â/g, 'a')
+    .replace(/ã/g, 'a')
+    .replace(/é/g, 'e')
+    .replace(/è/g, 'e')
+    .replace(/ê/g, 'e')
+    .replace(/í/g, 'i')
+    .replace(/ï/g, 'i')
+    .replace(/ì/g, 'i')
+    .replace(/ó/g, 'o')
+    .replace(/ô/g, 'o')
+    .replace(/õ/g, 'o')
+    .replace(/ú/g, 'u')
+    .replace(/ü/g, 'u')
+    .replace(/ç/g, 'c')
+    .replace(/ß/g, 's')
+}
