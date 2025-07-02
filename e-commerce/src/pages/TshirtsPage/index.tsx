@@ -8,7 +8,7 @@ const TshirtsPage: React.FC = () => {
   const { t } = useTranslation()
   const { searchedProducts } = useProducts()
 
-  const products = searchedProducts?.filter((a) => a?.label === 'tshirts')[0]?.products
+  const products = searchedProducts?.filter((a) => a?.label === 'livros')[0]?.products
 
   useEffect(() => {
     window.scrollTo({top: 0, behavior: 'smooth'})
@@ -24,7 +24,7 @@ const TshirtsPage: React.FC = () => {
         </Row>
         <Row>
           <Typography.Text className="category-name">
-            {t('tshirts')}
+            {t('livros')}
           </Typography.Text>
         </Row>
       </div>
@@ -35,7 +35,7 @@ const TshirtsPage: React.FC = () => {
                 return (
                   <ProductsGridCard product_name={product?.name} product_collection={product?.collection} 
                   product_price={product?.price} product_images={product?.images} product_favorite={product?.favorite} product_discount={product?.discount}
-                  product_code={product?.code} product_category="tshirts"
+                  product_code={product?.code} product_category="livros"
                   />
                 )
               })}
