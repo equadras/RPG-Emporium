@@ -3,7 +3,7 @@ import { useProducts } from '../../hooks/useProducts'
 import CommerceContent, { ICommerceCard } from '../../components/CommerceContent' 
 import { Button, Col, Row, Typography } from 'antd'
 
-const bannerImage = '/e-commerce/assets/danti-banner.png'
+const bannerImage = '/e-commerce/assets/emporium-banner.png'
 
 const CommerceHome: React.FC = () => {
   const { searchedProducts, favoriteProductsIds } = useProducts()
@@ -25,12 +25,12 @@ const CommerceHome: React.FC = () => {
         <div className="banner-information-reduced">
           <Row>
             <Typography.Text className="info-title">
-              BEM-VINDO À DANTI!
+              BEM-VINDO À RPG EMPORIUM!
             </Typography.Text>
           </Row>
           <Row>
             <Typography.Text className="info-description-2">
-              Vista-se com autenticidade. Vista-se com DANTI.
+              Jogue com autenticidade. Jogue com RPG EMPORIUM.
             </Typography.Text>
           </Row>
           <Row>
@@ -51,21 +51,19 @@ const CommerceHome: React.FC = () => {
             <div className="banner-information">
               <Row>
                 <Typography.Text className="info-title">
-                  BEM-VINDO À DANTI!
+                  BEM-VINDO À RPG EMPORIUM!
                 </Typography.Text>
               </Row>
               <Row>
                 <Typography.Text className="info-description">
-                  Descubra uma nova forma de expressar sua personalidade
-                  através da moda. Na DANTI, unimos conforto e estilo para
-                  oferecer peças que acompanham você em todos os momentos.
-                  Explore nossa coleção exclusiva e encontre o look perfeito
-                  para seu dia a dia.
+                  Descubra uma nova forma de viver o RPG dentro e fora das mesas. 
+                  Unimos paixão pelo jogo e qualidade para oferecer produtos que refletem seu estilo de aventura. 
+                  Explore nossa coleção exclusiva e encontre os itens perfeitos para tornar cada sessão ainda mais épica.
                 </Typography.Text>
               </Row>
               <Row>
                 <Typography.Text className="info-description-2">
-                  Vista-se com autenticidade. Vista-se com DANTI.
+                  Jogue com autenticidade. Jogue com RPG EMPORIUM.
                 </Typography.Text>
               </Row>
               <Row>
@@ -101,13 +99,13 @@ const CommerceHome: React.FC = () => {
                 <div className="danti-mid-banner-content">
                   <Row justify="center">
                     <Typography.Text className="mid-title">
-                      Descubra um Estilo Único
+                      Descubra uma Aventura Única
                     </Typography.Text>
                   </Row>
                   <Row justify="center">
                     <Typography.Text className="mid-description">
-                      Renove seu guarda-roupa com peças versáteis que
-                      combinam conforto e sofisticação.
+                      Descubra novos itens para sua 
+                      historia ficar ainda mais completa!
                     </Typography.Text>
                   </Row>
                 </div>
@@ -120,13 +118,13 @@ const CommerceHome: React.FC = () => {
                 <div className="danti-mid-banner-content">
                   <Row justify="center">
                     <Typography.Text className="mid-title">
-                      Tendências Que Inspiram
+                      Aventuras Que Inspiram
                     </Typography.Text>
                   </Row>
                   <Row justify="center">
                     <Typography.Text className="mid-description">
-                      Explore as últimas novidades da moda e encontre peças
-                      que combinem com seu estilo.
+                      Explore as últimas novidades e encontre acessorios
+                      que combinem com seu grupo.
                     </Typography.Text>
                   </Row>
                 </div>

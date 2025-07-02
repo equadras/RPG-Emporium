@@ -1098,7 +1098,7 @@ button:focus-visible {
 
 .danti-mid-banner {
   height: 400px;
-  background-image: url('/e-commerce/assets/danti-mid-banner.png');
+  background-image: url('/e-commerce/assets/emporium-mid-banner.png');
   background-repeat: no-repeat;
   width: 100%;
   display: flex;
@@ -1125,7 +1125,7 @@ button:focus-visible {
 
 .danti-mid-banner-2 {
   height: 400px;
-  background-image: url('/e-commerce/assets/danti-mid-banner-2.png');
+  background-image: url('/e-commerce/assets/emporium-mid-banner-2.png');
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;

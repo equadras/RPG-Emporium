@@ -22,11 +22,11 @@ const CommerceHeader: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false)
   
   const items = [
-    {key: 'tshirts', label: 'CAMISETAS'},
-    {key: 'coats', label: 'BLUSAS'},
-    {key: 'shorts', label: 'BERMUDAS'},
-    {key: 'pants', label: 'CALÇAS'},
-    {key: 'shoes', label: 'CALÇADOS'},
+    {key: 'tshirts', label: 'LIVROS'},
+    {key: 'coats', label: 'DADOS'},
+    {key: 'shorts', label: 'JOGOS'},
+    {key: 'pants', label: 'MINIATURAS'},
+    {key: 'shoes', label: 'CENÁRIOS'},
     {key: 'accessories', label: 'ACESSÓRIOS'},
   ]
   
@@ -76,7 +76,7 @@ const CommerceHeader: React.FC = () => {
           <div className="header-logo" onClick={() => {
             navigate('/')
             setCurrentTab('')
-            }}>DANTI</div>
+            }}>RPG EMPORIUM</div>
         </Row>
         <Row justify="center" style={{alignItems: 'center'}}>
           <Space.Compact size="large" className='search-area'>

@@ -20,7 +20,7 @@ const App: React.FC = () => {
               <AppRoutes />
             </Content>
             <Footer style={{ textAlign: 'center', marginTop: 100}}>
-              Danti ©{new Date().getFullYear()} Created by Daniel A. Abrão
+              RPG EMPORIUM ©{new Date().getFullYear()} Created by Emanuel e Thuany
             </Footer>
           </Layout>
         </CartContentProvider>
