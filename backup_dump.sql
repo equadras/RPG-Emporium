@@ -5,7 +5,7 @@
 -- Dumped from database version 14.17 (Ubuntu 14.17-0ubuntu0.22.04.1)
 -- Dumped by pg_dump version 14.17 (Ubuntu 14.17-0ubuntu0.22.04.1)
 
--- Started on 2025-07-02 19:19:06 -03
+-- Started on 2025-07-02 20:24:12 -03
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -418,7 +418,6 @@ COPY public.product (id, name, description, price, category, image_url, created_
 60	Conspiração Real	Jogo de intrigas palacianas, com cartas de conspiração e alianças secretas para derrubar o rei.	36.73	JOGOS		2025-07-02 21:40:36.471736
 61	Miniatura Cavaleiro de Prata	Cavaleiro em armadura prateada, esculpido em resina com detalhes finos.	22.62	MINIATURAS		2025-07-02 21:41:05.927418
 62	Miniatura Dragão Carmesim	Dragão alado em pose de ataque, pintado em tons de vermelho profundo.	66.53	MINIATURAS		2025-07-02 21:41:05.927422
-63	Miniatura Elfa Arqueira	Figura de elfa arqueira segurando arco e flecha, base texturizada com folhas.	45.67	MINIATURAS		2025-07-02 21:41:05.927423
 64	Miniatura Mago Arcano	Mago com cajado ornamentado e manto esvoaçante, detalhes em dourado.	93.74	MINIATURAS		2025-07-02 21:41:05.927423
 65	Miniatura Goblin Risonho	Goblin malévolo com adagas curvas, escultura em resina verde vibrante.	72.50	MINIATURAS		2025-07-02 21:41:05.927424
 66	Miniatura Bárbaro Selvagem	Guerreiro musculoso empunhando machado duplo, base rochosa gravada.	68.06	MINIATURAS		2025-07-02 21:41:05.927425
@@ -476,6 +475,7 @@ COPY public.product (id, name, description, price, category, image_url, created_
 118	Manual de Ladinos	Técnicas de furtividade, arrombamento e disfarce.	51.79	LIVROS		2025-07-02 21:41:52.665874
 119	Fantasia & Realidade	Discussão filosófica sobre mundo imaginário versus real.	99.50	LIVROS		2025-07-02 21:41:52.665875
 120	Relíquias Perdidas	Inventário de artefatos lendários e suas localizações.	31.33	LIVROS		2025-07-02 21:41:52.665875
+63	Miniatura Elfa Arqueira	Figura de elfa arqueira segurando arco e flecha, base texturizada com folhas.	45.67	MINIATURAS		2025-07-02 21:41:05.927423
 \.
 
 
@@ -526,6 +526,90 @@ COPY public.product_image (id, product_id, url, created_at) FROM stdin;
 38	38	http://172.18.150.40:5000/static/uploads/38.jpg	2025-07-02 22:13:53.590336
 39	39	http://172.18.150.40:5000/static/uploads/39.webp	2025-07-02 22:14:15.382852
 40	40	http://172.18.150.40:5000/static/uploads/40.webp	2025-07-02 22:14:40.167342
+41	41	http://172.18.150.40:5000/static/uploads/41.webp	2025-07-02 22:23:08.735261
+42	42	http://172.18.150.40:5000/static/uploads/42.jpg	2025-07-02 22:23:31.345974
+43	43	http://172.18.150.40:5000/static/uploads/43.webp	2025-07-02 22:24:13.432016
+44	44	http://172.18.150.40:5000/static/uploads/44.png	2025-07-02 22:26:17.936298
+45	45	http://172.18.150.40:5000/static/uploads/45.webp	2025-07-02 22:26:43.977262
+46	46	http://172.18.150.40:5000/static/uploads/46.png	2025-07-02 22:27:20.957906
+47	47	http://172.18.150.40:5000/static/uploads/47.jpg	2025-07-02 22:27:47.858058
+48	48	http://172.18.150.40:5000/static/uploads/48.jpg	2025-07-02 22:29:00.260271
+49	49	http://172.18.150.40:5000/static/uploads/49.jpg	2025-07-02 22:29:25.64387
+50	50	http://172.18.150.40:5000/static/uploads/50.webp	2025-07-02 22:30:07.891351
+51	51	http://172.18.150.40:5000/static/uploads/51.jpg	2025-07-02 22:30:30.814227
+52	52	http://172.18.150.40:5000/static/uploads/52.webp	2025-07-02 22:30:56.330486
+53	53	http://172.18.150.40:5000/static/uploads/53.webp	2025-07-02 22:31:26.471284
+54	54	http://172.18.150.40:5000/static/uploads/54.jpg	2025-07-02 22:31:54.881987
+55	55	http://172.18.150.40:5000/static/uploads/55.webp	2025-07-02 22:32:22.077923
+56	56	http://172.18.150.40:5000/static/uploads/56.webp	2025-07-02 22:32:48.444884
+57	57	http://172.18.150.40:5000/static/uploads/56.webp	2025-07-02 22:33:09.184816
+58	57	http://172.18.150.40:5000/static/uploads/57.webp	2025-07-02 22:33:18.240089
+59	58	http://172.18.150.40:5000/static/uploads/58.webp	2025-07-02 22:34:25.255192
+60	59	http://172.18.150.40:5000/static/uploads/59.jpg	2025-07-02 22:35:01.93168
+61	60	http://172.18.150.40:5000/static/uploads/60.webp	2025-07-02 22:35:32.451369
+62	61	http://172.18.150.40:5000/static/uploads/61.webp	2025-07-02 22:36:40.88576
+63	62	http://172.18.150.40:5000/static/uploads/62.webp	2025-07-02 22:37:28.114717
+64	63	http://172.18.150.40:5000/static/uploads/63.jpg	2025-07-02 22:38:03.497958
+65	63	http://172.18.150.40:5000/static/uploads/63.jpg	2025-07-02 22:39:28.877521
+66	63	http://172.18.150.40:5000/static/uploads/63.webp	2025-07-02 22:42:21.553312
+67	64	http://172.18.150.40:5000/static/uploads/64.png	2025-07-02 22:45:28.323824
+68	65	http://172.18.150.40:5000/static/uploads/65.jpg	2025-07-02 22:50:22.979265
+69	66	http://172.18.150.40:5000/static/uploads/66.webp	2025-07-02 22:50:49.093494
+70	67	http://172.18.150.40:5000/static/uploads/67.gif	2025-07-02 22:51:17.59028
+71	68	http://172.18.150.40:5000/static/uploads/68.webp	2025-07-02 22:52:09.054352
+72	69	http://172.18.150.40:5000/static/uploads/69.webp	2025-07-02 22:52:33.511702
+73	70	http://172.18.150.40:5000/static/uploads/70.webp	2025-07-02 22:52:54.012289
+74	71	http://172.18.150.40:5000/static/uploads/71.webp	2025-07-02 22:53:28.818576
+75	72	http://172.18.150.40:5000/static/uploads/72.webp	2025-07-02 22:53:48.747048
+76	73	http://172.18.150.40:5000/static/uploads/73.webp	2025-07-02 22:54:13.643353
+77	74	http://172.18.150.40:5000/static/uploads/74.webp	2025-07-02 22:54:41.415376
+78	75	http://172.18.150.40:5000/static/uploads/75.png	2025-07-02 22:55:02.58721
+79	76	http://172.18.150.40:5000/static/uploads/76.webp	2025-07-02 22:55:24.269676
+80	77	http://172.18.150.40:5000/static/uploads/77.webp	2025-07-02 22:55:46.874571
+81	78	http://172.18.150.40:5000/static/uploads/78.jpg	2025-07-02 22:56:19.048977
+82	79	http://172.18.150.40:5000/static/uploads/79.webp	2025-07-02 22:56:47.438021
+83	80	http://172.18.150.40:5000/static/uploads/80.webp	2025-07-02 22:57:08.566294
+84	81	http://172.18.150.40:5000/static/uploads/81.webp	2025-07-02 22:58:04.85748
+85	82	http://172.18.150.40:5000/static/uploads/82.webp	2025-07-02 23:02:48.495157
+86	83	http://172.18.150.40:5000/static/uploads/83.jpg	2025-07-02 23:03:31.522893
+87	84	http://172.18.150.40:5000/static/uploads/84.jpg	2025-07-02 23:03:57.677168
+88	85	http://172.18.150.40:5000/static/uploads/85.jpg	2025-07-02 23:04:59.150027
+89	86	http://172.18.150.40:5000/static/uploads/86.jpg	2025-07-02 23:05:24.882857
+90	87	http://172.18.150.40:5000/static/uploads/87.jpg	2025-07-02 23:05:48.570583
+91	88	http://172.18.150.40:5000/static/uploads/88.webp	2025-07-02 23:06:10.010206
+92	89	http://172.18.150.40:5000/static/uploads/89.webp	2025-07-02 23:06:36.453601
+93	90	http://172.18.150.40:5000/static/uploads/90.webp	2025-07-02 23:07:01.519676
+94	91	http://172.18.150.40:5000/static/uploads/91.jpg	2025-07-02 23:07:30.821957
+95	9	http://172.18.150.40:5000/static/uploads/91.jpg	2025-07-02 23:08:08.17877
+96	92	http://172.18.150.40:5000/static/uploads/92.jpg	2025-07-02 23:08:17.394951
+97	93	http://172.18.150.40:5000/static/uploads/93.jpg	2025-07-02 23:08:40.7283
+98	94	http://172.18.150.40:5000/static/uploads/94.webp	2025-07-02 23:09:02.102638
+99	95	http://172.18.150.40:5000/static/uploads/95.jpg	2025-07-02 23:09:28.641287
+100	96	http://172.18.150.40:5000/static/uploads/96.webp	2025-07-02 23:09:52.648096
+101	97	http://172.18.150.40:5000/static/uploads/97.jpg	2025-07-02 23:10:22.321582
+102	98	http://172.18.150.40:5000/static/uploads/98.webp	2025-07-02 23:10:46.82703
+103	99	http://172.18.150.40:5000/static/uploads/99.webp	2025-07-02 23:11:14.917924
+104	100	http://172.18.150.40:5000/static/uploads/100.webp	2025-07-02 23:11:46.619491
+105	101	http://172.18.150.40:5000/static/uploads/101.png	2025-07-02 23:12:23.411724
+106	102	http://172.18.150.40:5000/static/uploads/102.jpg	2025-07-02 23:13:04.816243
+107	103	http://172.18.150.40:5000/static/uploads/103.webp	2025-07-02 23:13:35.499113
+108	104	http://172.18.150.40:5000/static/uploads/104.jpg	2025-07-02 23:14:07.225258
+109	105	http://172.18.150.40:5000/static/uploads/105.jpg	2025-07-02 23:14:32.00834
+110	106	http://172.18.150.40:5000/static/uploads/106.webp	2025-07-02 23:15:38.013796
+111	107	http://172.18.150.40:5000/static/uploads/107.jpg	2025-07-02 23:16:18.841591
+112	108	http://172.18.150.40:5000/static/uploads/108.webp	2025-07-02 23:16:40.459451
+113	109	http://172.18.150.40:5000/static/uploads/109.jpg	2025-07-02 23:17:15.207373
+114	110	http://172.18.150.40:5000/static/uploads/110.webp	2025-07-02 23:17:34.447555
+115	111	http://172.18.150.40:5000/static/uploads/111.jpg	2025-07-02 23:18:04.008863
+116	112	http://172.18.150.40:5000/static/uploads/112.jpg	2025-07-02 23:18:25.056237
+117	113	http://172.18.150.40:5000/static/uploads/113.webp	2025-07-02 23:19:00.654579
+118	114	http://172.18.150.40:5000/static/uploads/114.jpg	2025-07-02 23:19:30.515785
+119	115	http://172.18.150.40:5000/static/uploads/115.webp	2025-07-02 23:19:49.658559
+120	116	http://172.18.150.40:5000/static/uploads/116.jpg	2025-07-02 23:20:12.433861
+121	117	http://172.18.150.40:5000/static/uploads/117.webp	2025-07-02 23:20:48.859149
+122	118	http://172.18.150.40:5000/static/uploads/118.webp	2025-07-02 23:21:18.650263
+123	119	http://172.18.150.40:5000/static/uploads/119.jpg	2025-07-02 23:21:40.56318
+124	120	http://172.18.150.40:5000/static/uploads/120.webp	2025-07-02 23:22:06.49027
 \.
 
 
@@ -581,7 +665,7 @@ SELECT pg_catalog.setval('public.product_id_seq', 120, true);
 -- Name: product_image_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.product_image_id_seq', 40, true);
+SELECT pg_catalog.setval('public.product_image_id_seq', 124, true);
 
 
 --
@@ -710,7 +794,7 @@ ALTER TABLE ONLY public.product_image
     ADD CONSTRAINT product_image_product_id_fkey FOREIGN KEY (product_id) REFERENCES public.product(id);
 
 
--- Completed on 2025-07-02 19:19:06 -03
+-- Completed on 2025-07-02 20:24:12 -03
 
 --
 -- PostgreSQL database dump complete

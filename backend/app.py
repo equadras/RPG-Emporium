@@ -37,8 +37,8 @@ class CategoryEnum(Enum):
     DADOS       = 'dados'
     JOGOS       = 'jogos'
     MINIATURAS  = 'miniaturas'
-    CENARIOS  = 'cenarios'
-    ACESSORIOS  = 'accessories'
+    CENARIOS    = 'cenarios'
+    ACESSORIOS  = 'acessorios'
     
 
 class OrderStatusEnum(Enum):
