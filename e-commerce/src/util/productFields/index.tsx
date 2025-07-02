@@ -12,12 +12,12 @@ import WishListPage from "../../pages/WishListPage";
 
 export const routePathsAndElements: any = [
   {path: '/', element: <CommerceHome />},
-  {path: '/tshirts', element: <TshirtsPage />},
-  {path: '/shorts', element: <ShortsPage />},
-  {path: '/coats', element: <CoatsPage />},
-  {path: '/pants', element: <PantsPage />},
-  {path: '/shoes', element: <ShoesPage />},
-  {path: '/accessories', element: <AccessoriesPage />},
+  {path: '/livros', element: <TshirtsPage />},
+  {path: '/jogos', element: <ShortsPage />},
+  {path: '/dados', element: <CoatsPage />},
+  {path: '/miniaturas', element: <PantsPage />},
+  {path: '/cenarios', element: <ShoesPage />},
+  {path: '/accessorios', element: <AccessoriesPage />},
   {path: '/products/:product_name', element: <ShowProductPage />},
   {path: '/wishlist', element: <WishListPage />},
   {path: '/checkout/:transition_status', element: <CheckoutPage />}

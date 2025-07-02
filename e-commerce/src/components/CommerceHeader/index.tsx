@@ -22,12 +22,12 @@ const CommerceHeader: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false)
   
   const items = [
-    {key: 'tshirts', label: 'LIVROS'},
-    {key: 'coats', label: 'DADOS'},
-    {key: 'shorts', label: 'JOGOS'},
-    {key: 'pants', label: 'MINIATURAS'},
-    {key: 'shoes', label: 'CENÁRIOS'},
-    {key: 'accessories', label: 'ACESSÓRIOS'},
+    {key: 'livros', label: 'LIVROS'},
+    {key: 'dados', label: 'DADOS'},
+    {key: 'jogos', label: 'JOGOS'},
+    {key: 'miniaturas', label: 'MINIATURAS'},
+    {key: 'cenarios', label: 'CENÁRIOS'},
+    {key: 'accessorios', label: 'ACESSÓRIOS'},
   ]
   
 
