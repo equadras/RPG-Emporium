@@ -8,7 +8,7 @@ const AccessoriesPage: React.FC = () => {
   const { t } = useTranslation()
   const { searchedProducts } = useProducts()
 
-  const products = searchedProducts?.filter((a) => a?.label === 'accessories')[0]?.products
+  const products = searchedProducts?.filter((a) => a?.label === 'acessorios')[0]?.products
 
   useEffect(() => {
     window.scrollTo({top: 0, behavior: 'smooth'})
@@ -35,7 +35,7 @@ const AccessoriesPage: React.FC = () => {
                 return (
                   <ProductsGridCard product_name={product?.name} product_collection={product?.collection} 
                   product_price={product?.price} product_images={product?.images} product_favorite={product?.favorite} product_discount={product?.discount}
-                  product_code={product?.code} product_category="accessories"
+                  product_code={product?.code} product_category="acessorios"
                   />
                 )
               })}
