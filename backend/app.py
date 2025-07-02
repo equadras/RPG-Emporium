@@ -33,11 +33,13 @@ def add_cors_headers(response):
 
 # -----------------| enums |----------------------
 class CategoryEnum(Enum):
-    DADOS       = 'dados'
-    MINIATURAS  = 'miniaturas'
     LIVROS      = 'livros'
-    ACESSORIOS  = 'acessorios'
-
+    DADOS       = 'dados'
+    JOGOS       = 'jogos'
+    MINIATURAS  = 'miniaturas'
+    CENARIOS  = 'cenarios'
+    ACESSORIOS  = 'accessories'
+    
 
 class OrderStatusEnum(Enum):
     PROCESSING = 'em processamento'
