@@ -3,7 +3,7 @@ import { useProducts } from '../../hooks/useProducts'
 import CommerceContent, { ICommerceCard } from '../../components/CommerceContent' 
 import { Button, Col, Row, Typography } from 'antd'
 
-const bannerImage = '/e-commerce/assets/danti-banner.png'
+const bannerImage = '/e-commerce/assets/emporium-banner.png'
 
 const CommerceHome: React.FC = () => {
   const { searchedProducts, favoriteProductsIds } = useProducts()
