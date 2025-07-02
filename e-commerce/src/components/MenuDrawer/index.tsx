@@ -23,7 +23,7 @@ const MenuDrawer: React.FC<IMenuDrawer> = ({setVisibleMenuDrawer, items}) => {
           navigate('/')
           setVisibleMenuDrawer(false)
         }}>
-          DANTI
+          RPG EMPORIUM
         </div>
       </div>
       }
