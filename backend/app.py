@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']    = os.getenv('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI']    = os.getenv('SQLALCHEMY_DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY']                 = os.getenv('SECRET_KEY')
 
@@ -82,8 +82,7 @@ class Product(db.Model):
     name         = db.Column(db.String(120),  nullable=False)
     description  = db.Column(db.Text)
     price        = db.Column(db.Numeric(10,2), nullable=False)
-    category     = db.Column(db.Enum(CategoryEnum), nullable=False) 
-    image_url    = db.Column(db.String(1024))        
+    category     = db.Column(db.Enum(CategoryEnum, values_callable=lambda x: [e.value for e in x]), nullable=False) 
     created_at   = db.Column(db.DateTime,     default=datetime.utcnow)
 
     def to_dict(self):
@@ -117,7 +116,7 @@ class Order(db.Model):
     __tablename__ = 'order'
     id         = db.Column(db.Integer,      primary_key=True)
     user_id    = db.Column(db.Integer,      db.ForeignKey('user.id'), nullable=False)
-    status     = db.Column(db.Enum(OrderStatusEnum),
+    status     = db.Column(db.Enum(OrderStatusEnum, values_callable=lambda x: [e.value for e in x]),
             default=OrderStatusEnum.PROCESSING,
             nullable=False)          
     created_at = db.Column(db.DateTime,     default=datetime.utcnow)
@@ -253,8 +252,7 @@ def create_product():
             name        = d['name'],
             description = d.get('description',''),
             price       = d['price'],
-            category    = cat,
-            image_url   = d.get('image_urls', [None])[0]
+            category    = cat
             )
     db.session.add(p)
     db.session.flush()  # popula p.id
@@ -283,7 +281,6 @@ def update_product(id):
     p.name        = d.get('name',        p.name)
     p.description = d.get('description', p.description)
     p.price       = d.get('price',       p.price)
-    p.image_url   = d.get('image_url',   p.image_url)
 
     db.session.commit()
     return jsonify(p.to_dict()), 200
