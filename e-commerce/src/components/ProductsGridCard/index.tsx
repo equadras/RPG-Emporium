@@ -19,7 +19,7 @@ const ProductsGridCard: React.FC<ICommerceCard> = ({product_name, product_collec
   const [favoriteProduct, setFavoriteProduct] = useState(() => {
     const storagedValues = localStorage.getItem('@Danti:FavoriteProducts')
     const splitted = storagedValues?.split(',') as string[] || []
-    return storagedValues && splitted?.includes(product_code.toString())
+    return storagedValues && splitted?.includes(product_code?.toString() || '')
   })
   const [heartHover, setHeartHover] = useState(false)
   const { setFavoriteProductsIds } = useProducts()
@@ -51,14 +51,14 @@ const ProductsGridCard: React.FC<ICommerceCard> = ({product_name, product_collec
     event.stopPropagation(); 
     const storagedValues = localStorage.getItem('@Danti:FavoriteProducts')
     const splitted = storagedValues?.split(',') as string[] || []
-    if (storagedValues && splitted?.includes(product_code.toString())) {
+    if (storagedValues && splitted?.includes(product_code?.toString() || '')) {
       const filteredValues = splitted?.filter(a => Number(a) !== product_code)
       setFavoriteProductsIds(filteredValues)
       setFavoriteProduct(false)
       removeFromWishList()
       localStorage.setItem("@Danti:FavoriteProducts", filteredValues?.join(','))
     } else {
-      const newFavoriteValues = [...splitted, product_code?.toString()]
+      const newFavoriteValues = [...splitted, product_code?.toString() || '']
       setFavoriteProduct(true)
       addToWishList()
       localStorage.setItem("@Danti:FavoriteProducts", newFavoriteValues?.join(','))

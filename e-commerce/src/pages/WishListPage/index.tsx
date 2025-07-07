@@ -9,7 +9,7 @@ const WishListPage: React.FC = () => {
   const { searchedProducts } = useProducts()
   const storagedFavorites = localStorage.getItem('@Danti:FavoriteProducts')?.split(',') || []
   const wishListProducts = searchedProducts.flatMap(category => 
-    category?.products?.filter(product => storagedFavorites?.includes(product.code.toString())) || []
+    category?.products?.filter(product => storagedFavorites?.includes(product.id.toString())) || []
   ) || []
 
   useEffect(() => {
@@ -30,9 +30,14 @@ const WishListPage: React.FC = () => {
           <Row gutter={[16, 16]} justify="center" style={{marginBottom: 50}}> 
               {wishListProducts?.map((product) => {
                 return (
-                  <ProductsGridCard product_name={product?.name} product_collection={product?.collection} 
-                  product_price={product?.price} product_images={product?.images} product_favorite={product?.favorite} product_discount={product?.discount}
-                  product_code={product?.code}
+                  <ProductsGridCard 
+                    product_name={product?.name} 
+                    product_collection={product?.category} 
+                    product_price={product?.price} 
+                    product_images={product?.images} 
+                    product_favorite={storagedFavorites?.includes(product.id.toString())} 
+                    product_discount={undefined}
+                    product_code={product?.id}
                   />
                 )
               })}

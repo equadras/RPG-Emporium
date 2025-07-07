@@ -6,7 +6,7 @@ import { useProducts } from "../../hooks/useProducts"
 
 const AccessoriesPage: React.FC = () => {
   const { t } = useTranslation()
-  const { searchedProducts } = useProducts()
+  const { searchedProducts, favoriteProductsIds } = useProducts()
 
   const products = searchedProducts?.filter((a) => a?.label === 'acessorios')[0]?.products
 
@@ -33,9 +33,16 @@ const AccessoriesPage: React.FC = () => {
           <Row gutter={[16, 16]} justify="center" style={{marginBottom: 50}}> 
               {products?.map((product) => {
                 return (
-                  <ProductsGridCard product_name={product?.name} product_collection={product?.collection} 
-                  product_price={product?.price} product_images={product?.images} product_favorite={product?.favorite} product_discount={product?.discount}
-                  product_code={product?.code} product_category="acessorios"
+                  <ProductsGridCard 
+                    key={product?.id}
+                    product_name={product?.name} 
+                    product_collection={product?.description} 
+                    product_price={product?.price} 
+                    product_images={product?.images} 
+                    product_favorite={favoriteProductsIds.includes(product?.id?.toString())} 
+                    product_discount={undefined}
+                    product_code={product?.id} 
+                    product_category="acessorios"
                   />
                 )
               })}
