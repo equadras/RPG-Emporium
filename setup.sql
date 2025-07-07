@@ -116,7 +116,7 @@ INSERT INTO product (name, description, price, category) VALUES
 -- ACESSORIOS
 INSERT INTO product (name, description, price, category) VALUES
 ('Escudo do Mestre', 'Escudo dobrável.', 25.99, 'acessorios'),
-('', 'Bolsa para guardar dados.', 14.99, 'acessorios'),
+('Bolsa para Dados', 'Bolsa para guardar dados.', 14.99, 'acessorios'),
 ('Mapas Laminados', 'Kit de mapas.', 34.99, 'acessorios'),
 ('Marcadores Personagem', 'Marcadores práticos.', 12.99, 'acessorios'),
 ('Kit Canetas', 'Canetas para mapas.', 9.99, 'acessorios');

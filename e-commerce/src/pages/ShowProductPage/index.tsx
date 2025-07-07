@@ -5,15 +5,12 @@ import { useEffect, useState } from "react";
 import { HeartFilled, HeartOutlined, MinusOutlined, PlusOutlined, ShoppingOutlined } from "@ant-design/icons";
 import { useCartContent } from "../../hooks/useCardContent";
 import { useProducts } from "../../hooks/useProducts";
-import MeasurementsModal from "../../components/MeasurementsModal";
 const ShowProductPage: React.FC = () => {
   const location = useLocation()
   const [productQty, setProductQty] = useState(1)
-  const [productSize, setProductSize] = useState('')
   const { setFavoriteProductsIds } = useProducts()
   const { setTotalItemsInCard, totalItemsInCard } = useCartContent()
   const [currentProductImage, setCurrentProductImage] = useState(location?.state?.product_images[0])
-  const [showMeasurementsModal, setShowMeasurementsModal] = useState(false);
   const productCategory = location?.state?.product_category
   const images = location.state.product_images
   const [favoriteProduct, setFavoriteProduct] = useState(() => {
@@ -22,31 +19,7 @@ const ShowProductPage: React.FC = () => {
     return storagedValues && splitted?.includes(location?.state?.product_code.toString())
   })
 
-  const sizes = ['tshirts', 'coats', 'shorts']?.includes(productCategory) ? [{size: 'pp', available: false}, 
-    {size: 'p', available: true},
-    {size: 'm', available: false},
-    {size: 'g', available: false},
-    {size: 'xg', available: true},
-    {size: '1g', available: true},
-    {size: '2g', available: false},
-    {size: '3g', available: true}
-  ] : [{size: '37', available: true}, 
-    {size: '38', available: false},
-    {size: '39', available: true},
-    {size: '40', available: false},
-    {size: '41', available: false},
-    {size: '42', available: true},
-    {size: '43', available: true},
-    {size: '44', available: false}
-  ]
   const [messageApi, contextHolder] = message.useMessage();
-
-  const warning = () => {
-    messageApi.open({
-      type: 'warning',
-      content: 'Selecione um tamanho para prosseguir'
-    });
-  };
 
   const success= () => {
     messageApi.open({
@@ -62,13 +35,9 @@ const ShowProductPage: React.FC = () => {
   function handleClickAddToCart() {
     const productAlreadyInCart = localStorage.getItem(`@Danti:Cart_Products_${location?.state?.product_name?.toLowerCase()?.replace(" ", '-')}_${location?.state?.product_code}`)
     if (!productAlreadyInCart) {
-      if (productSize?.length > 0 || productCategory === 'accessories') {
-        localStorage.setItem(`@Danti:Cart_Products_${location?.state?.product_name?.toLowerCase()?.replace(" ", '-')}_${location?.state?.product_code}`, JSON.stringify({...location?.state, product_qty: productQty, product_size: productSize}))
-        setTotalItemsInCard(totalItemsInCard + 1)
-        success()
-      } else {
-        warning()
-      }
+      localStorage.setItem(`@Danti:Cart_Products_${location?.state?.product_name?.toLowerCase()?.replace(" ", '-')}_${location?.state?.product_code}`, JSON.stringify({...location?.state, product_qty: productQty}))
+      setTotalItemsInCard(totalItemsInCard + 1)
+      success()
     }
   }
 
@@ -107,10 +76,6 @@ const ShowProductPage: React.FC = () => {
   
   return (
     <div className="products-view">
-      {showMeasurementsModal && (<MeasurementsModal
-        productCategory={productCategory}
-        setShowMeasurementsModal={setShowMeasurementsModal}
-      />)}
       <div className="reduced-view" style={{color: 'black'}}>
         <div className="product-show">
           <Row style={{width: '100%'}} >
@@ -151,32 +116,6 @@ const ShowProductPage: React.FC = () => {
                 <Col xs={24} className="horizontal-image-slider">
                   <ImageSlider images={images} setCurrentProductImage={setCurrentProductImage} vertical={false} verticalSwiping={false} slidesToShow={1} dots/>
                 </Col>
-                {!['accessories']?.includes(productCategory) && (
-                  <div className="size-selection">
-                  <Row justify="space-between">
-                    <Typography.Text style={{fontSize: 16}}>
-                      {'Selecione um tamanho'}
-                    </Typography.Text>
-                    <Typography.Text style={{fontSize: 16, textDecoration: 'underline', cursor: 'pointer'}} onClick={() => setShowMeasurementsModal(true)}>
-                      {'Tabela de medidas'}
-                    </Typography.Text>
-                  </Row>
-                  <Row className="sizes-available">
-                    {sizes?.map((size) => {
-                      return (
-                        <span >
-                          <span className="text-container" style={size?.available ? (size?.size === productSize ? {background: 'rgb(255, 255, 255)', boxShadow: 'rgb(0, 0, 0) 0px 0px 0px 1px, rgba(0, 0, 0, 0.3) 0px 0px 0px 4px'} : {background: 'rgb(255, 255, 255)'}) : {background: 'linear-gradient(to right top, rgb(247, 247, 247) calc(50% - 1px), rgb(214, 214, 214), rgb(247, 247, 247) calc(50% + 1px))'}} >
-                            <label className="text-label">
-                              <input type="radio" name="product_size" value={size?.size} className="input-radio-sizes" onChange={(e) => setProductSize(e.target.value)}/>
-                              {size?.size}
-                            </label>
-                          </span>
-                        </span>
-                      ) 
-                    })}
-                  </Row>
-                </div>
-                )}
                 <Row>
                   <Typography.Text className="payment-product-quantity">
                     {'Quantidade'}
