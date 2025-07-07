@@ -158,7 +158,7 @@ const CheckoutPage: React.FC = () => {
       <Row >
         <Col xs={24} lg={14} xl={12} className="checkout-informations">
           <Row style={{marginBottom: 10}} justify="space-between">
-            <Typography.Text className="danti-logo-checkout">{'DANTI'}</Typography.Text>
+            <Typography.Text className="danti-logo-checkout">{'EMPORIUM'}</Typography.Text>
             <Button ref={buttonRef} className='checkout-menu-button' onClick={() => setVisibleSummary(true)}>
               <MenuOutlined />
             </Button>

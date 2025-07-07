@@ -1098,7 +1098,7 @@ button:focus-visible {
 
 .danti-mid-banner {
   height: 400px;
-  background-image: url('/e-commerce/assets/emporium-mid-banner.png');
+  background-image: url('/e-commerce/assets/emporium-mid-banner.jpg');
   background-repeat: no-repeat;
   width: 100%;
   display: flex;
@@ -1125,7 +1125,7 @@ button:focus-visible {
 
 .danti-mid-banner-2 {
   height: 400px;
-  background-image: url('/e-commerce/assets/emporium-mid-banner-2.png');
+  background-image: url('/e-commerce/assets/emporium-mid-banner2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -1139,12 +1139,12 @@ button:focus-visible {
       text-align: center;
       font-family: 'Playfair', 'Inter', sans-serif;
       font-size: 60px;
-      color: white;
+      color: black;
       font-weight: 600;
     }
     .mid-description {
       font-family: 'Inter', sans-serif;
-      color: white;
+      color: black;
       font-size: 20px;
       text-align: center;
     }
