@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -e
+
 echo "🐍 Configurando backend..."
 
 cd backend || { echo "❌ Pasta backend não encontrada"; exit 1; }
@@ -13,20 +14,22 @@ DB_USER="rpg_user"
 DB_PASS="123456"
 SECRET_KEY=$(openssl rand -hex 32)
 
+# Detecta Codespaces
+if [ "$CODESPACES" = "true" ]; then
+  DB_URL="sqlite:///rpg_emporium.db"
+else
+  DB_URL="postgresql://${DB_USER}:${DB_PASS}@localhost:5432/${DB_NAME}"
+fi
+
 if [ ! -f "$ENV_FILE" ]; then
   cat <<EOF > "$ENV_FILE"
 # gerado por setup_backend.sh
-SQLALCHEMY_DATABASE_URI=postgresql://${DB_USER}:${DB_PASS}@localhost:5432/${DB_NAME}
+SQLALCHEMY_DATABASE_URI=${DB_URL}
 SECRET_KEY=${SECRET_KEY}
 FLASK_ENV=development
 EOF
   echo "📝 Arquivo $ENV_FILE criado."
 fi
-
-
-# ——— pacotes de sistema necessários ———
-sudo apt-get update -y
-sudo apt-get install -y python3-venv python3-dev build-essential python3-full
 
 # ——— cria / reaproveita o venv ———
 if [ ! -x venv/bin/activate ]; then
@@ -40,6 +43,6 @@ export PIP_BREAK_SYSTEM_PACKAGES=1      # ignora PEP 668
 python -m pip install -U pip wheel setuptools
 pip install -r requirements.txt
 
-echo "🚀 Iniciando backend em http://localhost:5000"
+echo "🚀 Iniciando backend em http://0.0.0.0:5000"
 venv/bin/python app.py
 

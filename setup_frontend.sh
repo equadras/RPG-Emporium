@@ -27,9 +27,17 @@ npm install
 # Garante .env
 if [ ! -f ".env" ]; then
     echo "📝 Criando arquivo .env..."
-    echo "VITE_API_BASE_URL=http://localhost:5000" > .env
+    if [ "$CODESPACES" = "true" ]; then
+      echo "VITE_API_BASE_URL=https://5000-${CODESPACE_NAME}-$GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN" > .env
+    else
+      echo "VITE_API_BASE_URL=http://localhost:5000" > .env
+    fi
 fi
 
 echo "🚀 Iniciando frontend..."
-npm run dev &
+if [ "$CODESPACES" = "true" ]; then
+  npm run dev -- --host 0.0.0.0 &
+else
+  npm run dev &
+fi
 

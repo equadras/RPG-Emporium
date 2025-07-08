@@ -1,5 +1,9 @@
 #!/bin/bash
 
+export CODESPACES="${CODESPACES:-false}"
+export CODESPACE_NAME="${CODESPACE_NAME:-}" # Codespaces define essa variável
+export GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN="${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN:-app.github.dev}"
+
 echo "🚀 Iniciando RPG Emporium..."
 
 # Verificar se estamos na raiz
@@ -48,8 +52,13 @@ echo "✅ Frontend pronto em http://localhost:5173"
 # Mensagem final
 echo ""
 echo "🎯 Projeto iniciado com sucesso!"
-echo "🌐 Frontend: http://localhost:5173"
-echo "🔧 Backend:  http://localhost:5000"
+if [ "$CODESPACES" = "true" ]; then
+  echo "🌐 Frontend: https://5173-${CODESPACE_NAME}-${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}"
+  echo "🔧 Backend:  https://5000-${CODESPACE_NAME}-${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}"
+else
+  echo "🌐 Frontend: http://localhost:5173"
+  echo "🔧 Backend:  http://localhost:5000"
+fi
 echo ""
 echo "Para parar o projeto, pressione Ctrl+C"
 

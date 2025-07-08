@@ -3,19 +3,24 @@ set -e                                           # aborta na primeira falha
 
 echo "🚀 Configurando banco de dados para RPG Emporium..."
 
+if [ "$CODESPACES" = "true" ]; then
+  echo "⚡️ Rodando em Codespaces: usando SQLite (rpg_emporium.db)"
+  # SQLite não precisa de setup
+  exit 0
+fi
+
 #######################################
 # 1. Instala/garante PostgreSQL ativo #
 #######################################
 if ! command -v psql &>/dev/null; then
-  echo "📥 PostgreSQL não encontrado — instalando..."
-  sudo apt update -y
-  sudo apt install -y postgresql postgresql-contrib
+  echo "📥 PostgreSQL não encontrado — instale manualmente se necessário."
+  exit 1
 fi
 
-if ! sudo systemctl is-active --quiet postgresql; then
+if ! systemctl is-active --quiet postgresql; then
   echo "🔄 Iniciando serviço PostgreSQL..."
-  sudo systemctl start postgresql
-  sudo systemctl enable postgresql
+  systemctl start postgresql
+  systemctl enable postgresql
 fi
 
 ###############################################
@@ -54,7 +59,6 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public
 ALTER DEFAULT PRIVILEGES IN SCHEMA public
   GRANT ALL ON SEQUENCES TO rpg_user;
 EOSQL
-
 
 #################################
 # 3. Executa script de estrutura #
