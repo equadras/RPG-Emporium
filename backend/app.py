@@ -25,7 +25,7 @@ bcrypt = Bcrypt(app)
 @app.after_request
 def add_cors_headers(response):
     origin = request.headers.get('Origin')
-    if origin and 'app.github.dev' in origin:
+    if origin and origin.endswith('.app.github.dev'):
         response.headers['Access-Control-Allow-Origin'] = origin
     elif origin == 'http://localhost:5173':
         response.headers['Access-Control-Allow-Origin'] = origin
