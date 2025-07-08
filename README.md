@@ -5,11 +5,9 @@ Um e-commerce completo para produtos de RPG com backend em Python e frontend em 
 ## 🚀 Configuração Rápida
 
 ### Pré-requisitos
-- Python 3.8+
-- Node.js 16+
-- PostgreSQL
 - Git
-
+- Espaço em disco
+- 
 ### Instalação Automática
 
 1. **Clone o repositório:**
@@ -28,6 +26,8 @@ O script irá:
 - ✅ Instalar e configurar PostgreSQL
 - ✅ Criar o banco de dados `rpg_emporium`
 - ✅ Executar o script `setup.sql` com os produtos
+- ✅ Instalar e configurar Python e o ambiente virtual venv
+- ✅ Instalar e configurar Node.js
 - ✅ Instalar dependências do backend e frontend
 - ✅ Iniciar ambos os serviços
 
@@ -143,3 +143,5 @@ O frontend está organizado em:
 - **`/src/contexts/`** - Contextos do React
 - **`/src/services/`** - Serviços de API
 - **`/src/hooks/`** - Hooks customizados
+
+  
