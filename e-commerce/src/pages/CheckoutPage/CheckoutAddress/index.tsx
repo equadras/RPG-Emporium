@@ -35,9 +35,6 @@ const CheckoutAddress: React.FC = () => {
               <Typography.Text style={{ fontSize: 16, marginBottom: 10}}>
                 {'E-mail de contato'}
               </Typography.Text>
-              <Typography.Text style={{ fontSize: 16 }}>
-                {'Já tem uma conta? Login'}
-              </Typography.Text>
             </Row>
           <Form.Item className="checkout-fields" label="" name="checkout_email" rules={[{required: true, message: 'Por favor, informe o e-mail'}]}>
             <Input type="email" placeholder="E-mail" className="checkout-email-input"/>
@@ -46,11 +43,6 @@ const CheckoutAddress: React.FC = () => {
         <Col xs={24} >
           <Checkbox className="checkout-checkbox">
             {'Receber notificações'}
-          </Checkbox>
-        </Col>
-        <Col xs={24} >
-          <Checkbox className="checkout-checkbox" style={{marginBottom: 20}}>
-            {'Criar conta para compras futuras'}
           </Checkbox>
         </Col>
         <Col xs={24}>
