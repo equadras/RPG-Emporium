@@ -19,7 +19,7 @@ chmod +x setup_backend.sh
 ./setup_backend.sh &
 BACKEND_PID=$!
 timeout=30
-while ! curl -s http://localhost:5000/healthz >/dev/null; do
+while ! curl -s http://localhost:5050/healthz >/dev/null; do
   ((timeout--))
   [ $timeout -le 0 ] && { echo "❌ Backend não respondeu em 30 s"; exit 1; }
   sleep 1
@@ -27,10 +27,10 @@ done
 
 # Aguarda backend subir (porta 5000)
 echo "⏳ Aguardando backend iniciar..."
-until curl -s http://localhost:5000 > /dev/null; do
+until curl -s http://localhost:5050 > /dev/null; do
     sleep 1
 done
-echo "✅ Backend pronto em http://localhost:5000"
+echo "✅ Backend pronto em http://localhost:5050"
 
 # Frontend
 echo "⚛️ Preparando frontend..."
@@ -49,7 +49,7 @@ echo "✅ Frontend pronto em http://localhost:5173"
 echo ""
 echo "🎯 Projeto iniciado com sucesso!"
 echo "🌐 Frontend: http://localhost:5173"
-echo "🔧 Backend:  http://localhost:5000"
+echo "🔧 Backend:  http://localhost:5050"
 echo ""
 echo "Para parar o projeto, pressione Ctrl+C"
 

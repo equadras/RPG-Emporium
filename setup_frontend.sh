@@ -27,7 +27,7 @@ npm install
 # Garante .env
 if [ ! -f ".env" ]; then
     echo "📝 Criando arquivo .env..."
-    echo "VITE_API_BASE_URL=http://localhost:5000" > .env
+    echo "VITE_API_BASE_URL=http://localhost:5050" > .env
 fi
 
 echo "🚀 Iniciando frontend..."

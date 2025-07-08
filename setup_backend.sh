@@ -40,6 +40,6 @@ export PIP_BREAK_SYSTEM_PACKAGES=1      # ignora PEP 668
 python -m pip install -U pip wheel setuptools
 pip install -r requirements.txt
 
-echo "🚀 Iniciando backend em http://localhost:5000"
+echo "🚀 Iniciando backend em http://localhost:5050"
 venv/bin/python app.py
 

@@ -466,5 +466,5 @@ if __name__ == '__main__':
         db.create_all()  # CRIA todas as tabelas conforme seus novos modelos
 
     #isso foi pra rodar para abrir o flask do wsl pro windows
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5050)
 
