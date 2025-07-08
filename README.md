@@ -14,7 +14,7 @@ Um e-commerce completo para produtos de RPG com backend em Python e frontend em 
 
 1. **Clone o repositório:**
 ```bash
-git clone <seu-repositorio>
+git clone https://github.com/equadras/RPG-Emporium.git
 cd RPG-Emporium
 ```
 
