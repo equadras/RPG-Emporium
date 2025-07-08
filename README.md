@@ -6,8 +6,7 @@ Um e-commerce completo para produtos de RPG com backend em Python e frontend em 
 
 ### Pré-requisitos
 - Git
-- Espaço em disco
-- 
+
 ### Instalação Automática
 
 1. **Clone o repositório:**
