@@ -124,9 +124,9 @@ const CartDrawer: React.FC<ICartDrawer> = ({setVisibleCartDrawer}) => {
                       }</Typography.Text>
                     </Row>
                     <Row justify="space-between" className="cart-product-quantity-input">
-                      <MinusOutlined className="quantity-operator" onClick={() => alert('diminuiu')}/>
+                      <MinusOutlined className="quantity-operator" />
                         {product?.product_qty}
-                      <PlusOutlined className="quantity-operator" onClick={() => alert('aumentou')}/>
+                      <PlusOutlined className="quantity-operator" />
                     </Row>
                   </Col>
                 </Row>
