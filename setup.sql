@@ -92,42 +92,42 @@ INSERT INTO product (name, description, price, category) VALUES
 -- DADOS
 INSERT INTO product (name, description, price, category) VALUES
 ('Kit Dados Dorian', 'Conjunto de dados D6 opacos Dorian storm.', 19.99, 'dados'),
-('Kit Dados Imogen', 'Kit translúcidos de daods imogen.', 7.99, 'dados'),
+('Kit Dados Imogen', 'Kit translúcidos de dados imogen.', 17.99, 'dados'),
 ('Kit Dados Fearn', 'Kit completo em metal da fearn.', 89.99, 'dados'),
 ('Kit Dados Dagger Heart', 'Dados de dagger heart.', 15.99, 'dados'),
 ('Kit Dados FCG', 'Dados com inscrições rúnicas do personagem FCG.', 24.99, 'dados');
 
 -- MINIATURAS
 INSERT INTO product (name, description, price, category) VALUES
-('Miniatura Guerreiro', 'Figura de um guerreiro.', 29.99, 'miniaturas'),
-('Dragão Vermelho', 'Miniatura de dragão.', 49.99, 'miniaturas'),
-('Arqueiro Élfico', 'Miniatura de elfo arqueiro.', 34.99, 'miniaturas'),
-('Orc Brutamontes', 'Miniatura de orc.', 32.99, 'miniaturas'),
-('Mago Arcano', 'Miniatura de mago.', 39.99, 'miniaturas');
+('Miniatura Druida Dark', 'Figura de um druida da floresta.', 29.99, 'miniaturas'),
+('Miniatura DragonBorn', 'Miniatura de dragonborn guerreiro.', 49.99, 'miniaturas'),
+('Miniatura Anão Guerreiro', 'Anão guerreio com martelo.', 34.99, 'miniaturas'),
+('Miniatura Anão Clerigo', 'Miniatura de Anão clerigo com martelo.', 32.99, 'miniaturas'),
+('Miniatura Caveira', 'Miniatura de caveira magica.', 19.99, 'miniaturas');
 
 -- CENARIOS
 INSERT INTO product (name, description, price, category) VALUES
-('Token personagens', 'Tokens para personagens de rpg.', 99.99, 'cenarios'),
-('Grid de mapa', 'Grid de mapa.', 59.99, 'cenarios'),
-('Tokens inimigos', 'Tokens para cenarios.', 29.99, 'cenarios'),
-('Floresta Densa', 'Peças de floresta modular.', 49.99, 'cenarios'),
-('Torres de fogo', 'Torres de fogo.', 79.99, 'cenarios');
+('Token personagens', 'Tokens para personagens de rpg.', 39.99, 'cenarios'),
+('Grid de mapa', 'Grid de mapa quadriculado para cenario.', 29.99, 'cenarios'),
+('Livros Magico', 'Peça de livros magicos flutuantes.', 39.99, 'cenarios'),
+('Mimico', 'Peças de tesouro mimico.', 49.99, 'cenarios'),
+('Torres de fogo', 'Torres de fogo magico', 79.99, 'cenarios');
 
 -- ACESSORIOS
 INSERT INTO product (name, description, price, category) VALUES
-('Escudo do Mestre', 'Escudo dobrável.', 25.99, 'acessorios'),
-('Bolsa para Dados', 'Bolsa para guardar dados.', 14.99, 'acessorios'),
-('Mapas Laminados', 'Kit de mapas.', 34.99, 'acessorios'),
-('Marcadores Personagem', 'Marcadores práticos.', 12.99, 'acessorios'),
-('Kit Canetas', 'Canetas para mapas.', 9.99, 'acessorios');
+('Argolas de Efeitos', '20 argolas de efeitos para miniaturas e tokens', 15.99, 'acessorios'),
+('Marcador de inspiração de bardo', 'Roleta de marcação de inspiração bardica', 44.99, 'acessorios'),
+('Case dados metalicos', 'Guarda de bolso dados metalicos vintage.', 34.99, 'acessorios'),
+('Marcadores de Vida', 'Marcadores de vida prático até 399', 22.99, 'acessorios'),
+('Chaveiro de dado', 'Chaveiro dado de vinte lados.', 9.99, 'acessorios');
 
 -- JOGOS
 INSERT INTO product (name, description, price, category) VALUES
-('Jogo RPG Inferno', 'Cartas de magias diversas.', 199.99, 'jogos'),
-('Jogo RPG SCREAM', 'Jogo de RPG para um de terror.', 39.99, 'jogos'),
-('The Gonnies', 'Jogo base de RPG para crianças.', 159.99, 'jogos'),
-('Eclipse: Perseguidores', 'Jogo completo iniciante.', 149.99, 'jogos'),
-('Jogo ROAM', 'Mix de dados e cartas.', 129.99, 'jogos');
+('Jogo RPG Inferno', 'Jogo de estrategia terror magico', 199.99, 'jogos'),
+('Jogo RPG SCREAM', 'Jogo franquia scream para um.', 139.99, 'jogos'),
+('The Gonnies', 'Jogo tabuleiro em equipe.', 159.99, 'jogos'),
+('Eclipse: Perseguidores', 'Jogo tabuleiro ficção cientifica.', 149.99, 'jogos'),
+('Jogo ROAM', 'Jogo tabuleiro de dados e cartas.', 129.99, 'jogos');
 
 -- Inserir imagens na tabela product_image
 -- LIVROS (IDs 1-5)
