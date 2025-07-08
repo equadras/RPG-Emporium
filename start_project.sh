@@ -2,68 +2,66 @@
 
 echo "🚀 Iniciando RPG Emporium..."
 
-# Verificar se estamos no diretório correto
+# Verificar se estamos na raiz
 if [ ! -f "setup.sql" ]; then
     echo "❌ Execute este script na raiz do projeto RPG-Emporium"
     exit 1
 fi
 
-# Configurar banco de dados
+# Banco de dados
 echo "📦 Configurando banco de dados..."
 chmod +x setup_database.sh
 ./setup_database.sh
 
-# Instalar dependências do backend
-echo "🐍 Instalando dependências do backend..."
-cd backend
-if [ ! -d "venv" ]; then
-    echo "📦 Criando ambiente virtual..."
-    python3 -m venv venv
-fi
-
-source venv/bin/activate
-pip install -r requirements.txt
-
-# Iniciar backend em background
-echo "🔧 Iniciando backend..."
-python app.py &
+# Backend
+echo "🐍 Preparando backend..."
+chmod +x setup_backend.sh
+./setup_backend.sh &
 BACKEND_PID=$!
+timeout=30
+while ! curl -s http://localhost:5000/healthz >/dev/null; do
+  ((timeout--))
+  [ $timeout -le 0 ] && { echo "❌ Backend não respondeu em 30 s"; exit 1; }
+  sleep 1
+done
 
-# Aguardar backend inicializar
-sleep 3
+# Aguarda backend subir (porta 5000)
+echo "⏳ Aguardando backend iniciar..."
+until curl -s http://localhost:5000 > /dev/null; do
+    sleep 1
+done
+echo "✅ Backend pronto em http://localhost:5000"
 
-
-# Instalar dependências do frontend
-echo "⚛️ Instalando dependências do frontend..."
-cd ../e-commerce
-npm install
-
-# Criar arquivo .env se não existir
-if [ ! -f ".env" ]; then
-    echo "📝 Criando arquivo .env..."
-    echo "VITE_API_BASE_URL=http://localhost:5000" > .env
-fi
-
-# Iniciar frontend
-echo "🎨 Iniciando frontend..."
-npm run dev &
+# Frontend
+echo "⚛️ Preparando frontend..."
+chmod +x setup_frontend.sh
+./setup_frontend.sh &
 FRONTEND_PID=$!
 
-echo "✅ Projeto iniciado com sucesso!"
+# Aguarda frontend subir (porta 5173)
+echo "⏳ Aguardando frontend iniciar..."
+until curl -s http://localhost:5173 > /dev/null; do
+    sleep 1
+done
+echo "✅ Frontend pronto em http://localhost:5173"
+
+# Mensagem final
+echo ""
+echo "🎯 Projeto iniciado com sucesso!"
 echo "🌐 Frontend: http://localhost:5173"
-echo "🔧 Backend: http://localhost:5000"
+echo "🔧 Backend:  http://localhost:5000"
 echo ""
 echo "Para parar o projeto, pressione Ctrl+C"
 
-# Função para limpar processos ao sair
+# Encerrar com grace
 cleanup() {
-    echo "🛑 Parando serviços..."
+    echo "🛑 Encerrando serviços..."
     kill $BACKEND_PID 2>/dev/null
     kill $FRONTEND_PID 2>/dev/null
     exit 0
 }
-
 trap cleanup SIGINT SIGTERM
 
-# Manter script rodando
-wait 
+# Loop infinito para manter script em execução
+while true; do sleep 1; done
+
