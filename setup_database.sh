@@ -1,66 +1,68 @@
 #!/usr/bin/env bash
-set -e                                           # aborta na primeira falha
+set -euo pipefail
 
 echo "🚀 Configurando banco de dados para RPG Emporium..."
 
-#######################################
-# 1. Instala/garante PostgreSQL ativo #
-#######################################
+_psql() {
+  sudo -u postgres bash -c 'cd /tmp && exec psql "$@"' _ "$@"
+}
+
 if ! command -v psql &>/dev/null; then
-  echo "📥 PostgreSQL não encontrado — instalando..."
+  echo "📥 Instalando PostgreSQL..."
   sudo apt update -y
   sudo apt install -y postgresql postgresql-contrib
 fi
 
-if ! sudo systemctl is-active --quiet postgresql; then
-  echo "🔄 Iniciando serviço PostgreSQL..."
-  sudo systemctl start postgresql
-  sudo systemctl enable postgresql
-fi
+start_pg() {
+  if command -v systemctl &>/dev/null && systemctl --quiet is-enabled postgresql 2>/dev/null; then
+    sudo systemctl start postgresql
+  elif sudo service postgresql start 2>/dev/null; then
+    :
+  else
+    ver="$(ls /etc/postgresql | head -n1)" || ver=14
+    sudo pg_ctlcluster --skip-systemctl -m fast "$ver" main start
+  fi
+}
+echo "🔄 Iniciando serviço PostgreSQL…"
+start_pg
 
-###############################################
-# 2. Cria BD e usuário se ainda não existirem #
-###############################################
 DB_NAME="rpg_emporium"
 DB_USER="rpg_user"
 DB_PASS="123456"
 
-echo "📦 Criando banco de dados '${DB_NAME}' (se necessário)…"
-sudo -u postgres psql -tc \
-  "SELECT 1 FROM pg_database WHERE datname='${DB_NAME}'" | grep -q 1 ||
-  sudo -u postgres createdb "$DB_NAME"
+echo "📦 Banco '${DB_NAME}'…"
+_psql -tc "SELECT 1 FROM pg_database WHERE datname='${DB_NAME}'" \
+  | grep -q 1 || _psql -c "CREATE DATABASE ${DB_NAME};"
 
-echo "👤 Garantindo usuário '${DB_USER}' e privilégios…"
-sudo -u postgres psql <<SQL
+echo "👤 Usuário '${DB_USER}'…"
+_psql <<SQL
 DO \$\$ BEGIN
   IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = '${DB_USER}') THEN
     CREATE USER ${DB_USER} WITH PASSWORD '${DB_PASS}';
+  ELSE
+    ALTER USER ${DB_USER} WITH PASSWORD '${DB_PASS}';
   END IF;
 END \$\$;
-
 GRANT ALL PRIVILEGES ON DATABASE ${DB_NAME} TO ${DB_USER};
 SQL
 
-#########################################
-#  ➜ Permissões no schema "public"     #
-#########################################
-sudo -u postgres psql -d "$DB_NAME" <<'EOSQL'
-ALTER SCHEMA public OWNER TO rpg_user;
-GRANT USAGE, CREATE ON SCHEMA public TO rpg_user;
-
--- novos objetos herdarão privilégios
+echo "🔧 Permissões no schema public…"
+_psql -d "$DB_NAME" <<SQL
+ALTER SCHEMA public OWNER TO ${DB_USER};
+GRANT USAGE, CREATE ON SCHEMA public TO ${DB_USER};
 ALTER DEFAULT PRIVILEGES IN SCHEMA public
-  GRANT ALL ON TABLES    TO rpg_user;
+  GRANT ALL ON TABLES    TO ${DB_USER};
 ALTER DEFAULT PRIVILEGES IN SCHEMA public
-  GRANT ALL ON SEQUENCES TO rpg_user;
-EOSQL
+  GRANT ALL ON SEQUENCES TO ${DB_USER};
+SQL
 
+PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SQL_TMP="/tmp/rpg_setup.sql"
+cp "$PROJECT_DIR/setup.sql" "$SQL_TMP"
 
-#################################
-# 3. Executa script de estrutura #
-#################################
-echo "🗄️ Executando setup.sql..."
-sudo -u postgres psql -d "$DB_NAME" -f setup.sql
+echo "🗄️ Executando setup.sql…"
+_psql -d "$DB_NAME" -f "$SQL_TMP"
+rm -f "$SQL_TMP"
 
 echo "✅ Banco de dados configurado com sucesso!"
 
