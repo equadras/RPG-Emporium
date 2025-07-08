@@ -49,11 +49,6 @@ const CheckoutSummaryDrawer: React.FC<ICheckoutSummaryDrawer> = ({validPromotion
                     </Col>
                     <Col xs={12}>
                       <span style={{fontWeight: 600}}>{product?.product_name}</span>
-                      <Row>
-                        <Typography.Text style={{fontSize: 11}}>
-                          {`Tamanho: ${product?.product_size?.toUpperCase()}`}
-                        </Typography.Text>
-                      </Row>
                     </Col>
                     <Col xs={6}>
                       {product?.product_discount && (

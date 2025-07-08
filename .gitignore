@@ -30,6 +30,7 @@ Thumbs.db
 
 # ––– Backend Python
 backend/.venv/
+backend/venv/
 backend/.env
 backend/static/
 

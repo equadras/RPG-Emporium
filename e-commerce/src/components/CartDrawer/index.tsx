@@ -123,11 +123,6 @@ const CartDrawer: React.FC<ICartDrawer> = ({setVisibleCartDrawer}) => {
                         </>
                       }</Typography.Text>
                     </Row>
-                    <Row>
-                      <Typography.Text className="cart-product-size">
-                        {product?.product_size ? `Tamanho ${product?.product_size?.toUpperCase()}` : `Tamanho único`}
-                      </Typography.Text>
-                    </Row>
                     <Row justify="space-between" className="cart-product-quantity-input">
                       <MinusOutlined className="quantity-operator" onClick={() => alert('diminuiu')}/>
                         {product?.product_qty}
